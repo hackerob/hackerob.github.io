@@ -71,17 +71,17 @@
 
 <p>If you copy the one liner from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#powershell">PayloadsAllTheThings</a> and paste it into PowerShell you get the old “This script contains malicious content…” error. This error means AMSI, the Antimalware Scan Interface, has recognized this code as malicious. So some kind of signature is catching it.</p>
 
-<p><img src="/assets/img/AV_Error.png" alt="AMSI Error" class="center-image" /></p>
+<p><img src="/assets/img/AV_Error.PNG" alt="AMSI Error" class="center-image" /></p>
 
 <p>But if you use my payload above which splits the one liner into several lines….</p>
 
-<p><img src="/assets/img/Shell.png" alt="Reverse Shell Success" class="center-image" /></p>
+<p><img src="/assets/img/Shell.PNG" alt="Reverse Shell Success" class="center-image" /></p>
 
 <p>No errors, and we have a shell!!!</p>
 
 <p>So can we just put this payload into a simple PowerShell script and run it? Can it be that simple?</p>
 
-<p><img src="/assets/img/AV_Script_Bypass.png" alt="Reverse Shell Script Failure" class="center-image" /></p>
+<p><img src="/assets/img/AV_Script_Bypass.PNG" alt="Reverse Shell Script Failure" class="center-image" /></p>
 
 <p>Yes, we can. It is really that simple.</p>
 
@@ -91,9 +91,9 @@
 
 <p>In case you are wondering, yes Windows Defender is turned on and I am running an up to date version of Windows.</p>
 
-<p><img src="/assets/img/Security_On.png" alt="Windows Security On" class="center-image" /></p>
+<p><img src="/assets/img/Security_On.PNG" alt="Windows Security On" class="center-image" /></p>
 
-<p><img src="/assets/img/Windows_Current_Version.png" alt="Windows Version" class="center-image" /></p>
+<p><img src="/assets/img/Windows_Current_Version.PNG" alt="Windows Version" class="center-image" /></p>
 
 <p>I was able to utilize this payload on the engagement and when someone plugged in the USB I had a reverse shell and more importantly a foothold on their network.</p>
 
