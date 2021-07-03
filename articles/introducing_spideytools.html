@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Introducing SpideyTools! | hackerob</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Introducing SpideyTools!" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Today I am releasing the beginnings of a suite of PowerShell tools to assist in web application penetration testing, geared specifically towards conducting testing according to the OWASP Testing Guide. The suite’s name: SpideyTools." />
+<meta property="og:description" content="Today I am releasing the beginnings of a suite of PowerShell tools to assist in web application penetration testing, geared specifically towards conducting testing according to the OWASP Testing Guide. The suite’s name: SpideyTools." />
+<link rel="canonical" href="https://hackerob.github.io/articles/introducing_spideytools.html" />
+<meta property="og:url" content="https://hackerob.github.io/articles/introducing_spideytools.html" />
+<meta property="og:site_name" content="hackerob" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-03T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introducing SpideyTools!" />
+<script type="application/ld+json">
+{"headline":"Introducing SpideyTools!","dateModified":"2021-07-03T00:00:00-04:00","datePublished":"2021-07-03T00:00:00-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hackerob.github.io/articles/introducing_spideytools.html"},"url":"https://hackerob.github.io/articles/introducing_spideytools.html","description":"Today I am releasing the beginnings of a suite of PowerShell tools to assist in web application penetration testing, geared specifically towards conducting testing according to the OWASP Testing Guide. The suite’s name: SpideyTools.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"><link type="application/atom+xml" rel="alternate" href="https://hackerob.github.io/feed.xml" title="hackerob" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">hackerob</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/articles/">articles</a><a class="page-link" href="/notes/">notes</a><a class="page-link" href="/tags/">tags</a><a class="page-link" href="/whoami">whoami</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introducing SpideyTools!</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-07-03T00:00:00-04:00" itemprop="datePublished">Jul 3, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Today I am releasing the beginnings of a suite of PowerShell tools to assist in web application penetration testing, geared specifically towards conducting testing according to the OWASP Testing Guide. The suite’s name: <a href="https://github.com/hackerob/SpideyTools">SpideyTools</a>.</p>
+
+<p>SpideyTools does things a little differently then most web application tools. It’s not a proxy (at least not yet) and it’s not a headless browser either. The inspiration and uniqueness of this tool comes from where the tool gathers its data. The data comes from the browser’s developer tools, in my case Edge DevTools (yes I use Edge not Chrome). While the developer tools have several extremely useful and powerful functions, SpideyTools is mainly utilizing a single feature, namely “Export HAR.” The Export HAR feature downloads all the web traffic (requests and responses) captured by your current browser tab and saves this data to a JSON file. SpideyTools ingests and parses this HAR file which provides the data that the various tools will use to conduct analysis of the web application.</p>
+
+<p>Since I am specifically trying to create a tool to help with the OWASP Testing guide, the de-facto standard for web application testing, I put my sites on a task I find extremely tedious yet very important, to Identify Application Entry Points (OWASP ID WSTG-INFO-06). This task involves identifying the complete attack surface of the application by determining every single web page as well as the different HTTP methods, parameters, cookies and headers each web page uses. It sounds like a lot of work, maybe even too much work. I know my first interpretation of this task was “Identify a lot of Application Entry Points” but really this task is asking for what Ron Swanson asks for: “all the bacon and eggs.”</p>
+
+<p><img src="/assets/img/ron_swanson.jpg" alt="Ron Swanson Meme" class="center-image" /></p>
+
+<p>On a recent test, I was shown just how important it is to map every single application entry point. On this test I had found an easy SQL injection on a very specific page and on a whim decided to throw a basic SQL payload <code class="language-plaintext highlighter-rouge">or'1'='1</code> into a search term used by a completely different page. To my surprise the search returned all the results and when inputting <code class="language-plaintext highlighter-rouge">or'1'='2</code> no results were found. I had found a blind SQL injection. I instantly remembered that this is exactly why OWASP directs you to map every single application entry point because you never know which parameter, header, or cookie may be vulnerable. I went through the rest of the application using the same payload against every search parameter the web app had and found another page vulnerable to blind SQL injection. I have learned my lesson, I map every application point.</p>
+
+<p>In the past I have accomplished this task with an Excel spreadsheet in one window and a proxy in the other but it’s slow going and in an application with a lot of features, very tedious. In this first release of SpideyTools there are several tools to help conduct this task. These tools are:</p>
+
+<p>Get-Links = extracts URLs from the various pages of the website
+Save-AttackSurface = creates an csv file containing information on all the pages of the web application including response code, parameters, and cookies set (yes, I still need to find a way to extract unique headers)</p>
+
+<p>So how exactly do you use the tools?</p>
+
+<ol>
+  <li>Setup Dev Tools</li>
+</ol>
+
+<p>First open a blank tab in your browser of choice. Right click anywhere on the page and select “Inspect Element.” In the dev tools navigate to the Network tab and make sure to configure “Preserve Log”.</p>
+
+<p><img src="/assets/img/preserve_log.PNG" alt="DevTools Setup" class="center-image" /></p>
+
+<ol start="2">
+  <li>Navigate the Website</li>
+</ol>
+
+<p>Now in this blank tab navigate to the web-page you are testing and click through the entire application filling in any parameters for requests as you go. It is important to fill in every possible box for every form since some requests only send parameters if the parameter has been filled out. Once you have exhausted all the visible pages, go ahead and click “Export HAR”.</p>
+
+<ol start="3">
+  <li>Use SpideyTools to Find Hidden Pages</li>
+</ol>
+
+<p>Open PowerShell and bypass those security warnings: <code class="language-plaintext highlighter-rouge">powershell -ep bypass</code>. Import the SpideyTools tool: <code class="language-plaintext highlighter-rouge">Import-Module ./SpideyTools.ps1</code>. Import the HAR file: <code class="language-plaintext highlighter-rouge">Import-Har -file ./testsite.har</code>. Run <code class="language-plaintext highlighter-rouge">Get-Links</code> which should print a list of URLs extracted from links on the different pages as well as any URLs extracted from the JavaScript code used by the web application. Now in that same tab you were using, navigate to any URLs that you did not previously. Run <code class="language-plaintext highlighter-rouge">Extract-Har</code> again and rinse and repeat until you have exhausted all the URLs that the web application exposes.</p>
+
+<p><img src="/assets/img/GetLinks_1.PNG" alt="Using SpideyTools" class="center-image" /></p>
+
+<ol start="4">
+  <li>Use SpideyTools to Create CSV Report</li>
+</ol>
+
+<p>You are now ready to run <code class="language-plaintext highlighter-rouge">Save-AttackSurface</code> which will save all this traffic to a nice CSV file which you can open in Excel. Although it may still be somewhat I at least find it much more enjoyable and maybe you will too.</p>
+
+<p>Thanks for reading and stay tuned as I add more useful tools to SpideyTools.</p>
+
+
+  </div><a class="u-url" href="/articles/introducing_spideytools.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">hackerob</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">hackerob</li><li><a class="u-email" href="mailto:pizza@hackerob.com">pizza@hackerob.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hackerob"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hackerob</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Blogs, notes, and code fragments of a curious hacker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
