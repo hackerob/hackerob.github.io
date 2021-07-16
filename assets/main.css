@@ -21,6 +21,8 @@ figcaption { font-size: 14px; }
 /** Lists */
 ul, ol { margin-left: 30px; }
 
+li { color: #82b3ef; }
+
 li > ul, li > ol { margin-bottom: 0; }
 
 /** Headings */
@@ -149,7 +151,7 @@ table td { border: 1px solid #e57373; }
 
 @media screen and (max-width: 800px) { .post-content h4 { font-size: 18px; } }
 
-.article-title { font-size: 28.8px; font-weight: 400; line-height: 54px; letter-spacing: -1px; }
+.article-title { font-size: 28.8px; font-weight: 400; letter-spacing: -1px; }
 
 .article-title, .article-title:visited { color: #82b3ef; }
 
