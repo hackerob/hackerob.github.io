@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Intro to C# | hackerob</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Intro to C#" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Many offensive tools these days are written in C# and I have finally decided it is time to jump on the bandwagon. The move to C# isn’t anything new, frankly I am jumping on the bandwagon probably 3 years late. I think a big reason it has taken me a while is because PowerShell has just been way easier and approachable to learn and use. The “whole” compiling thing has always seemed kind of scary and nothing is more frustrating then errors preventing you from compiling. This article will go through some of the basics of C# development and help knock down some of the perceived barriers and difficulties that I had. This article will be most helpful to those that know how to write a little bit of Python, Bash, or PowerShell but are new to the world of C# and/or compiled languages in general." />
+<meta property="og:description" content="Many offensive tools these days are written in C# and I have finally decided it is time to jump on the bandwagon. The move to C# isn’t anything new, frankly I am jumping on the bandwagon probably 3 years late. I think a big reason it has taken me a while is because PowerShell has just been way easier and approachable to learn and use. The “whole” compiling thing has always seemed kind of scary and nothing is more frustrating then errors preventing you from compiling. This article will go through some of the basics of C# development and help knock down some of the perceived barriers and difficulties that I had. This article will be most helpful to those that know how to write a little bit of Python, Bash, or PowerShell but are new to the world of C# and/or compiled languages in general." />
+<link rel="canonical" href="https://hackerob.github.io/articles/intro_to_csharp.html" />
+<meta property="og:url" content="https://hackerob.github.io/articles/intro_to_csharp.html" />
+<meta property="og:site_name" content="hackerob" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-28T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Intro to C#" />
+<script type="application/ld+json">
+{"headline":"Intro to C#","dateModified":"2021-10-28T00:00:00-04:00","datePublished":"2021-10-28T00:00:00-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hackerob.github.io/articles/intro_to_csharp.html"},"url":"https://hackerob.github.io/articles/intro_to_csharp.html","description":"Many offensive tools these days are written in C# and I have finally decided it is time to jump on the bandwagon. The move to C# isn’t anything new, frankly I am jumping on the bandwagon probably 3 years late. I think a big reason it has taken me a while is because PowerShell has just been way easier and approachable to learn and use. The “whole” compiling thing has always seemed kind of scary and nothing is more frustrating then errors preventing you from compiling. This article will go through some of the basics of C# development and help knock down some of the perceived barriers and difficulties that I had. This article will be most helpful to those that know how to write a little bit of Python, Bash, or PowerShell but are new to the world of C# and/or compiled languages in general.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"><link type="application/atom+xml" rel="alternate" href="https://hackerob.github.io/feed.xml" title="hackerob" /><script data-host="https://microanalytics.io" data-dnt="false" src="https://microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">hackerob</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/articles/">articles</a><a class="page-link" href="/notes/">notes</a><a class="page-link" href="/tags/">tags</a><a class="page-link" href="/whoami">whoami</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Intro to C#</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-10-28T00:00:00-04:00" itemprop="datePublished">Oct 28, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Many offensive tools these days are written in C# and I have finally decided it is time to jump on the bandwagon. The move to C# isn’t anything new, frankly I am jumping on the bandwagon probably 3 years late. I think a big reason it has taken me a while is because PowerShell has just been way easier and approachable to learn and use. The “whole” compiling thing has always seemed kind of scary and nothing is more frustrating then errors preventing you from compiling. This article will go through some of the basics of C# development and help knock down some of the perceived barriers and difficulties that I had. This article will be most helpful to those that know how to write a little bit of Python, Bash, or PowerShell but are new to the world of C# and/or compiled languages in general.</p>
+
+<p>So what is C# and how does it compare to Python or PowerShell?</p>
+
+<p>Well lets just go over some basic code snippets…</p>
+
+<p>Lets say I want to print to screen “I love pizza!”</p>
+
+<p>In Python we would write:
+<code class="language-plaintext highlighter-rouge">print("I love pizza!")</code></p>
+
+<p>We would save that file with a .py ending, say “pizza.py”, and then can execute it running <code class="language-plaintext highlighter-rouge">python ./pizza.py</code></p>
+
+<p>In PowerShell we would write:
+<code class="language-plaintext highlighter-rouge">Write-Host "I love Pizza!"</code></p>
+
+<p>We would save that file with a .ps1 ending, say “pizza.ps1”, and then can execute it from a PowerShell terminal by running <code class="language-plaintext highlighter-rouge">./pizza.ps1</code></p>
+
+<p>For C# we would write:
+<code class="language-plaintext highlighter-rouge">Console.WriteLine("Hello World!");</code></p>
+
+<p>Save that to a file with a .cs ending, pizza.cs, and then compile it using “csc.exe”. To find csc.exe run the following snippet:
+<code class="language-plaintext highlighter-rouge">Get-Childitem -Path C:\Windows\Microsoft.NET\Framework\*\csc.exe</code>
+And then to compile we run:
+<code class="language-plaintext highlighter-rouge">C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe ./pizza.cs</code></p>
+
+<p><img src="/assets/img/compiling_1.png" alt="Compiling" class="center-image" /></p>
+
+<p>As we see from the output above we get an error. There is actually several errors preventing us from compiling but in short what I recommend is to always start with the basic “Hello World!” skeleton:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApp1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Then whatever you want to run put where the “Hello World” statement is. You may also notice the <code class="language-plaintext highlighter-rouge">using System;</code> declaration at the beginning. This is similar to Python when you import  a module like math <code class="language-plaintext highlighter-rouge">import math</code>. So starting with this C# skeleton and adding our pizza code we should now have:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApp1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"I love pizza!"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Compile that and look at that, no more errors!</p>
+
+<p><img src="/assets/img/compiling_2.png" alt="Compiling Again" class="center-image" /></p>
+
+<p>The compiling process takes our pizza.cs file and gives us pizza.exe which we can now run:</p>
+
+<p><img src="/assets/img/running_pizza_exe.png" alt="Running pizza.exe" class="center-image" /></p>
+
+<p>While yes its a ton of steps and much more difficult than PowerShell or Python, hopefully I have helped show its not too bad. Also one benefit of the errors before compilation is you can have a lot more faith that the executable will run correctly while with Python or PowerShell you find out when you run the code that you missed a double quote somewhere.</p>
+
+<p>One huge tip I have is to install Visual Studio (different than Visual Studio Code). This gives you that basic C# skeleton for every project you create, helps you see the errors in your code before trying to compile, and provides an easy place for you to compile your project without needing to go searching for csc.exe every time.</p>
+
+<p>Not only is Visual Studio extremely helpful for creating your own projects but it is also very helpful when working on projects other people have made. For example say we want to modify the code base for <a href="https://github.com/GhostPack/Seatbelt">Seatbelt</a>. We can just clone (or download) this repository and, if Visual Studio is already installed, just double click the .sln file and Visual Studio will load up the code base for us.</p>
+
+<p><img src="/assets/img/seatbeltsolution.png" alt="Seatblet Solution" class="center-image" /></p>
+
+<p>Then to compile this we can just hit Build and then Build Solution.</p>
+
+<p><img src="/assets/img/buildseatbelt.png" alt="Build Seatbelt" class="center-image" /></p>
+
+<p>So ya, Visual Studio is kind of a must!</p>
+
+<p>Anyways if you have been on the fence about C#, hopefully this article has encouraged you to make the plunge. My next article will dive deeper into doing some actually pentesty stuff with C# including obfuscation!</p>
+
+
+  </div><a class="u-url" href="/articles/intro_to_csharp.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <!-- <h2 class="footer-heading">hackerob</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">hackerob</li><li><a class="u-email" href="mailto:pizza@hackerob.com">pizza@hackerob.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hackerob"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hackerob</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Blogs, notes, and code fragments of a curious hacker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
